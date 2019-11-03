@@ -9,6 +9,7 @@ using SalesWebMvc.Models.ViewModels;
 using SalesWebMvc.Services;
 using SalesWebMvc.Services.Exceptions;
 
+
 namespace SalesWebMvc.Controllers
 {
     public class SellersController : Controller
@@ -90,7 +91,6 @@ namespace SalesWebMvc.Controllers
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
-
             List<Departament> departaments = _departamentService.FindAll();
             SellerFormViewModels viewModel = new SellerFormViewModels { Seller = obj, Departaments= departaments};
             return View(viewModel); 
@@ -113,8 +113,6 @@ namespace SalesWebMvc.Controllers
                 return RedirectToAction(nameof(Error), new { message = e.Message });
             }
         }
-
-
         public IActionResult Error(string message)
         {
             var viewModel = new ErrorViewModel {
@@ -123,6 +121,5 @@ namespace SalesWebMvc.Controllers
             };
             return View(viewModel);
         }
-
     }
 }
